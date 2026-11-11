@@ -141,3 +141,12 @@ VALUES
     (3, 1, N'Incidenthantering och loggövervakning',     '2026-08-17', '2027-06-30'),
     (1, 1, N'Uppföljande säkerhetsgranskning',           '2027-04-06', '2027-04-30');
 GO
+
+-- Fråga A: Namn och timpris för konsulter med timpris över 1200 kr, högst pris först
+PRINT 'Fråga A: Konsulter med timpris över 1200 kr';
+SELECT
+    CONCAT(Fornamn, ' ', Efternamn) AS Konsult,
+    Timpris
+FROM Konsult
+WHERE Timpris > 1200
+ORDER BY Timpris DESC;
