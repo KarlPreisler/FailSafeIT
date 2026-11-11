@@ -142,6 +142,10 @@ VALUES
     (1, 1, N'Uppföljande säkerhetsgranskning',           '2027-04-06', '2027-04-30');
 GO
 
+
+/* ----------------------------------------------------------------------------
+   4. FRÅGOR
+   ---------------------------------------------------------------------------- */
 -- Fråga A: Namn och timpris för konsulter med timpris över 1200 kr, högst pris först
 PRINT 'Fråga A: Konsulter med timpris över 1200 kr';
 SELECT
@@ -172,3 +176,9 @@ FROM Kund
 LEFT JOIN Uppdrag ON Uppdrag.KundId = Kund.KundId
 GROUP BY Kund.KundId, Kund.Foretagsnamn
 ORDER BY AntalUppdrag DESC, Kund.Foretagsnamn;
+
+-- Fråga D: Uppdatera timpriset för en specifik konsult (KonsultId 3 = Sara Ekström)
+PRINT 'Fråga D: Uppdaterar timpris för en konsult';
+UPDATE Konsult
+SET Timpris = 1150.00
+WHERE KonsultId = 3;
