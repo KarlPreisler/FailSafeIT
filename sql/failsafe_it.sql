@@ -182,3 +182,13 @@ PRINT 'Fråga D: Uppdaterar timpris för en konsult';
 UPDATE Konsult
 SET Timpris = 1150.00
 WHERE KonsultId = 3;
+
+-- Fråga E: Ta bort en kund som inte har några uppdrag (KundId 4 = Kustlinjen Media AB)
+PRINT 'Fråga E: Tar bort en kund utan uppdrag';
+DELETE FROM Kund
+WHERE KundId = 4
+  AND NOT EXISTS (
+      SELECT 1
+      FROM Uppdrag
+      WHERE Uppdrag.KundId = Kund.KundId
+  );
