@@ -162,3 +162,13 @@ FROM Uppdrag
 INNER JOIN Kund    ON Kund.KundId       = Uppdrag.KundId
 INNER JOIN Konsult ON Konsult.KonsultId = Uppdrag.KonsultId
 ORDER BY Uppdrag.Startdatum;
+
+-- Fråga C: Antal uppdrag per kund
+PRINT 'Fråga C: Antal uppdrag per kund';
+SELECT
+    Kund.Foretagsnamn           AS Kund,
+    COUNT(Uppdrag.UppdragId)    AS AntalUppdrag
+FROM Kund
+LEFT JOIN Uppdrag ON Uppdrag.KundId = Kund.KundId
+GROUP BY Kund.KundId, Kund.Foretagsnamn
+ORDER BY AntalUppdrag DESC, Kund.Foretagsnamn;
