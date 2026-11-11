@@ -150,3 +150,15 @@ SELECT
 FROM Konsult
 WHERE Timpris > 1200
 ORDER BY Timpris DESC;
+
+-- Fråga B: Alla uppdrag med kundens företagsnamn, konsultens namn samt start- och slutdatum
+PRINT 'Fråga B: Sammanställning av alla uppdrag';
+SELECT
+    Kund.Foretagsnamn                                       AS Kund,
+    CONCAT(Konsult.Fornamn, ' ', Konsult.Efternamn)         AS Konsult,
+    Uppdrag.Startdatum,
+    Uppdrag.Slutdatum
+FROM Uppdrag
+INNER JOIN Kund    ON Kund.KundId       = Uppdrag.KundId
+INNER JOIN Konsult ON Konsult.KonsultId = Uppdrag.KonsultId
+ORDER BY Uppdrag.Startdatum;
